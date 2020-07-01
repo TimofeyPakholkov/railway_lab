@@ -14,4 +14,3 @@ void search_by_way(char* dbname);
 void search_by_cost(char* dbname);
 void add_ticket(char* dbname);
 void delete_ticket(char* dbname);
-
