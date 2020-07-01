@@ -1,19 +1,14 @@
-SRC = functions.o program.o
-TARGET = railway
+CC=g++
+CFLAGS=-c -Wall
+LDFLAGS=
+SOURCES=program.cpp functions.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+EXECUTABLE=labone
 
-all: $(TARGET)
+all: $(SOURCES) $(EXECUTABLE)
 
-program.o: program.cpp
-	gcc program.cpp -c -o program.o
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
-functions.o: functions.cpp
-	gcc functions.cpp -c -o functions.o
-
-$(TARGET): $(SRC)
-	gcc $(SRC) -o $(TARGET)
-
-install:
-	install $(TARGET) ~/forProgramm
-
-clean:
-	rm -rf $(SRC)
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
